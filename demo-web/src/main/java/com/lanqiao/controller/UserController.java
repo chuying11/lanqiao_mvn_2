@@ -3,6 +3,7 @@ package com.lanqiao.controller;
 import com.lanqiao.common.CommonResult;
 import com.lanqiao.entity.User;
 import com.lanqiao.service.IUserService;
+import com.lanqiao.vo.UserVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -28,6 +29,18 @@ public class UserController {
                              @RequestParam(value = "pageSize",required = false,defaultValue = "10")Integer pageSize){
         List<User> list = iUserService.findListByPage(pageNum, pageSize);
         return CommonResult.success("分页数据查询成功",list);
+    }
+
+    /**
+     * 查询用户列表 多表分页查询
+     * fetch("http://localhost:8080/users“)
+     * @return
+     */
+    @RequestMapping(value = "/users_part",method = RequestMethod.GET)
+    public CommonResult query(@RequestParam(value = "pageNum",required = false,defaultValue = "1")Integer pageNum,
+                                   @RequestParam(value = "pageSize",required = false,defaultValue = "10")Integer pageSize){
+        List<UserVo> list = iUserService.queryUserWithDepartsByPage(pageNum, pageSize);
+        return CommonResult.success("分页多表数据查询成功",list);
     }
 
     /**

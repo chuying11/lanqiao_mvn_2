@@ -1,6 +1,7 @@
 package com.lanqiao.dao;
 
 import com.lanqiao.entity.User;
+import com.lanqiao.vo.UserVo;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
@@ -52,4 +53,13 @@ public interface UserDao {
      */
     @Select("select username,password,email,address from tb_users where username=#{username}")
     User login(String username);
+
+
+    /**
+     * 两表联查
+     * @param pageNum
+     * @param pageSize
+     * @return
+     */
+    List<UserVo> queryUserWithDepartsByPage(@Param("pageNum") Integer pageNum, @Param("pageSize") Integer pageSize);
 }

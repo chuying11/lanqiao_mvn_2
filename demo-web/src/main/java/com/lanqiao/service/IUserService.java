@@ -1,6 +1,7 @@
 package com.lanqiao.service;
 
 import com.lanqiao.entity.User;
+import com.lanqiao.vo.UserVo;
 
 import java.util.List;
 
@@ -10,6 +11,15 @@ public interface IUserService {
      * @return
      */
     List<User> findListByPage(Integer pageNum, Integer pageSize);
+
+
+    /**
+     * 多表查询
+     * @param pageNum
+     * @param pageSize
+     * @return
+     */
+    List<UserVo> queryUserWithDepartsByPage(Integer pageNum, Integer pageSize);
 
     /**
      * 根据id查询

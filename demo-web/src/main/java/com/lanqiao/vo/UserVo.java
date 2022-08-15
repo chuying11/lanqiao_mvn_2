@@ -1,8 +1,13 @@
 package com.lanqiao.vo;
 
 public class UserVo {
+    private Long id;
     private String username;
     private String password;
+    private String email;
+    private String address;
+    private Integer partId;
+    private String partName;
 
     public String getUsername() {
         return username;
@@ -18,5 +23,45 @@ public class UserVo {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public Integer getPartId() {
+        return partId;
+    }
+
+    public void setPartId(Integer partId) {
+        this.partId = partId;
+    }
+
+    public String getPartName() {
+        return partName;
+    }
+
+    public void setPartName(String partName) {
+        this.partName = partName;
     }
 }

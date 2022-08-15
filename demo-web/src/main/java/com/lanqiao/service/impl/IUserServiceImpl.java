@@ -3,6 +3,7 @@ package com.lanqiao.service.impl;
 import com.lanqiao.dao.UserDao;
 import com.lanqiao.entity.User;
 import com.lanqiao.service.IUserService;
+import com.lanqiao.vo.UserVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +16,13 @@ public class IUserServiceImpl implements IUserService {
     UserDao userDao;
     @Override
     public List<User> findListByPage(Integer pageNum, Integer pageSize) {
-        List<User> list = userDao.findListByPage(pageNum, pageSize);
+        List<User> list = userDao.findListByPage((pageNum-1)*pageSize, pageSize);
+        return list;
+    }
+
+    @Override
+    public List<UserVo> queryUserWithDepartsByPage(Integer pageNum, Integer pageSize) {
+        List<UserVo> list = userDao.queryUserWithDepartsByPage((pageNum-1)*pageSize,pageSize);
         return list;
     }
 
