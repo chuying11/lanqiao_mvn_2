@@ -11,6 +11,7 @@ com\lanqiao\demo1\A7.class
 com\lanqiao\demo1\ColorBox.class
 com\lanqiao\proxy\ISale.class
 com\lanqiao\controller\LoginController.class
+com\lanqiao\entity\Depart.class
 com\lanqiao\aspect\SpringLogAspect.class
 com\lanqiao\demo\MyServiceImpl.class
 com\lanqiao\demo\Test.class
