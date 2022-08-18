@@ -6,6 +6,8 @@ public class User {
     private String password;
     private String email;
     private String address;
+    //配置关联关系  多对一
+    private Depart depart;
 
     public Long getId() {
         return id;
@@ -45,5 +47,14 @@ public class User {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+
+    public Depart getDepart() {
+        return depart;
+    }
+
+    public void setDepart(Depart depart) {
+        this.depart = depart;
     }
 }

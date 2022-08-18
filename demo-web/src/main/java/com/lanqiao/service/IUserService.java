@@ -20,6 +20,7 @@ public interface IUserService {
      * @return
      */
     List<UserVo> queryUserWithDepartsByPage(Integer pageNum, Integer pageSize);
+    List<User> queryUserWithDepartsByPage2(Integer pageNum, Integer pageSize);
 
     /**
      * 根据id查询

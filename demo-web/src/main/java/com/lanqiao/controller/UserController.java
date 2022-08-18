@@ -44,6 +44,18 @@ public class UserController {
     }
 
     /**
+     * 查询用户列表 ORM两表联查
+     * fetch("http://localhost:8080/users“)
+     * @return
+     */
+    @RequestMapping(value = "/users_part2",method = RequestMethod.GET)
+    public CommonResult query2(@RequestParam(value = "pageNum",required = false,defaultValue = "1")Integer pageNum,
+                              @RequestParam(value = "pageSize",required = false,defaultValue = "10")Integer pageSize){
+        List<User> list = iUserService.queryUserWithDepartsByPage2(pageNum, pageSize);
+        return CommonResult.success("分页多表数据查询成功",list);
+    }
+
+    /**
      * 根据id查询
      * @param id
      * @return

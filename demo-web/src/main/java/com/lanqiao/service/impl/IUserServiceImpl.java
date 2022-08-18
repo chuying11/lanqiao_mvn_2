@@ -27,6 +27,12 @@ public class IUserServiceImpl implements IUserService {
     }
 
     @Override
+    public List<User> queryUserWithDepartsByPage2(Integer pageNum, Integer pageSize) {
+        List<User> list = userDao.queryUserWithDepartsByPage2((pageNum-1)*pageSize,pageSize);
+        return list;
+    }
+
+    @Override
     public User findById(Long id) {
         User user = userDao.findById(id);
         return user;

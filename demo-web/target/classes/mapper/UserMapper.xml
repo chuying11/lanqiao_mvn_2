@@ -4,14 +4,44 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.lanqiao.dao.UserDao">
 
-    <update id="update"  parameterType="com.lanqiao.entity.User">
-        update tb_users set username=#{username},password=#{password},email=#{email},address=#{adress} where id =#{id}
+    <update id="update" parameterType="com.lanqiao.entity.User">
+        update tb_users
+        set username=#{username},
+            password=#{password},
+            email=#{email},
+            address=#{adress}
+        where id = #{id}
     </update>
 
 
     <select id="queryUserWithDepartsByPage" parameterType="hashmap" resultType="com.lanqiao.vo.UserVo">
-        select a.id,a.username,a.password,a.email,a.address,b.part_id partId,b.part_name partName from tb_users a left join department b
-        on a.part_id = b.part_id
-        limit #{pageNum},#{pageSize}
+        select a.id, a.username, a.password, a.email, a.address, b.part_id partId, b.part_name partName
+        from tb_users a
+                 left join department b
+                           on a.part_id = b.part_id
+            limit #{pageNum}
+           , #{pageSize}
+    </select>
+
+
+    <resultMap id="BaseResultMap" type="com.lanqiao.entity.User">
+        <id property="id" column="id" jdbcType="BIGINT"></id>
+        <result property="username" column="username" jdbcType="VARCHAR"></result>
+        <result property="password" column="password" jdbcType="VARCHAR"></result>
+        <result property="email" column="email" jdbcType="VARCHAR"></result>
+        <result property="address" column="address" jdbcType="VARCHAR"></result>
+        <association property="depart" javaType="com.lanqiao.entity.Depart">
+            <id property="partId" column="part_id" jdbcType="INTEGER"></id>
+            <result property="partName" column="part_name" jdbcType="VARCHAR"></result>
+        </association>
+    </resultMap>
+
+
+    <select id="queryUserWithDepartsByPage2" parameterType="hashmap" resultMap="BaseResultMap">
+        select id, username, password, email, address, a.part_id, part_name
+        from tb_users a
+                 left join department b
+                           on a.part_id = b.part_id
+
     </select>
 </mapper>

@@ -56,10 +56,18 @@ public interface UserDao {
 
 
     /**
-     * 两表联查
+     * 两表联查  vo查询
      * @param pageNum
      * @param pageSize
      * @return
      */
     List<UserVo> queryUserWithDepartsByPage(@Param("pageNum") Integer pageNum, @Param("pageSize") Integer pageSize);
+
+    /**
+     * 关联查询
+     * @param pageNum
+     * @param pageSize
+     * @return
+     */
+    List<User> queryUserWithDepartsByPage2(@Param("pageNum") Integer pageNum, @Param("pageSize") Integer pageSize);
 }
